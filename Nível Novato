@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    // Número de casas para cada movimento
+    int casasTorre = 5;   // Torre move 5 casas para a direita
+    int casasBispo = 5;   // Bispo move 5 casas diagonal (cima + direita)
+    int casasRainha = 8;  // Rainha move 8 casas para a esquerda
+
+    // 1. Movimento da Torre - para a direita (usando for)
+    printf("Movimento da Torre (5 casas para a direita):\n");
+    for (int i = 1; i <= casasTorre; i++) {
+        printf("Direita\n");  // imprime direção a cada casa
+    }
+
+    printf("\n");
+
+    // 2. Movimento do Bispo - diagonal para cima e direita (usando while)
+    printf("Movimento do Bispo (5 casas diagonal para cima e direita):\n");
+    int passosBispo = 0;
+    while (passosBispo < casasBispo) {
+        printf("Cima, Direita\n"); // movimento diagonal combina duas direções
+        passosBispo++;
+    }
+
+    printf("\n");
+
+    // 3. Movimento da Rainha - para a esquerda (usando do-while)
+    printf("Movimento da Rainha (8 casas para a esquerda):\n");
+    int passosRainha = 0;
+    do {
+        printf("Esquerda\n");
+        passosRainha++;
+    } while (passosRainha < casasRainha);
+
+    return 0;
+}
