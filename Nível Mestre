@@ -1,0 +1,96 @@
+#include <stdio.h>
+
+// --- Função recursiva para mover a Torre ---
+// Torre move 5 casas para a direita
+void moverTorre(int casas) {
+    if (casas == 0)
+        return;  // condição de parada da recursão
+    printf("Direita\n");
+    moverTorre(casas - 1);
+}
+
+// --- Função recursiva para mover a Rainha ---
+// Rainha move 8 casas para a esquerda
+void moverRainha(int casas) {
+    if (casas == 0)
+        return;  // condição de parada da recursão
+    printf("Esquerda\n");
+    moverRainha(casas - 1);
+}
+
+// --- Função recursiva para mover o Bispo ---
+// Bispo move 5 casas para cima e direita usando recursão vertical
+// com loops aninhados para o movimento horizontal.
+void moverBispo(int casasVertical, int casasHorizontal) {
+    if (casasVertical == 0)
+        return;  // condição de parada da recursão vertical
+
+    // Loop aninhado para movimento horizontal na casa atual (imprime "Direita" casasHorizontal vezes)
+    for (int i = 0; i < casasHorizontal; i++) {
+        printf("Direita\n");
+    }
+    // Movimento vertical: imprime "Cima" uma vez por cada chamada recursiva
+    printf("Cima\n");
+
+    moverBispo(casasVertical - 1, casasHorizontal);
+}
+
+// --- Movimento complexo do Cavalo ---
+// Usando loops aninhados, múltiplas variáveis e controle com continue e break
+// O Cavalo move 2 casas para cima e 1 casa para a direita (movimento em "L")
+void moverCavalo() {
+    int movimentosCima = 2;      // 2 casas para cima
+    int movimentosDireita = 1;   // 1 casa para direita
+
+    int contadorCima = 0;
+    int contadorDireita = 0;
+
+    printf("Movimento do Cavalo (em 'L': 2 casas para cima e 1 para direita):\n");
+
+    // Loop aninhado: externo controla o movimento para cima, interno para a direita
+    while (contadorCima < movimentosCima) {
+        // Movimenta para cima, 1 casa por iteração
+        printf("Cima\n");
+        contadorCima++;
+
+        // Para o movimento em "L", só move para a direita após terminar o movimento para cima
+        if (contadorCima == movimentosCima) {
+            for (contadorDireita = 0; contadorDireita < movimentosDireita; contadorDireita++) {
+                // Exemplo do uso de continue e break para controle
+                if (contadorDireita > 0) {
+                    // Só tem uma casa para a direita, então break após mover 1 vez
+                    break;
+                }
+                printf("Direita\n");
+            }
+        }
+    }
+}
+
+int main() {
+    // Definições das casas para cada peça
+    const int casasTorre = 5;
+    const int casasBispoVertical = 5;
+    const int casasBispoHorizontal = 1;  // A diagonal é "Cima" + "Direita" em cada passo
+    const int casasRainha = 8;
+
+    // Movimento da Torre com recursão
+    printf("Movimento da Torre (5 casas para a direita):\n");
+    moverTorre(casasTorre);
+    printf("\n");
+
+    // Movimento do Bispo com recursão (vertical) + loop aninhado (horizontal)
+    printf("Movimento do Bispo (5 casas diagonal para cima e direita):\n");
+    moverBispo(casasBispoVertical, casasBispoHorizontal);
+    printf("\n");
+
+    // Movimento da Rainha com recursão
+    printf("Movimento da Rainha (8 casas para a esquerda):\n");
+    moverRainha(casasRainha);
+    printf("\n");
+
+    // Movimento complexo do Cavalo usando loops aninhados e controle de fluxo
+    moverCavalo();
+
+    return 0;
+}
