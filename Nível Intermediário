@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+int main() {
+    // Movimentos das outras peças
+    int casasTorre = 5;   // Torre move 5 casas para a direita
+    int casasBispo = 5;   // Bispo move 5 casas diagonal (cima + direita)
+    int casasRainha = 8;  // Rainha move 8 casas para a esquerda
+
+    // Movimento da Torre - para a direita (usando for)
+    printf("Movimento da Torre (5 casas para a direita):\n");
+    for (int i = 1; i <= casasTorre; i++) {
+        printf("Direita\n");
+    }
+    printf("\n");
+
+    // Movimento do Bispo - diagonal para cima e direita (usando while)
+    printf("Movimento do Bispo (5 casas diagonal para cima e direita):\n");
+    int passosBispo = 0;
+    while (passosBispo < casasBispo) {
+        printf("Cima, Direita\n");
+        passosBispo++;
+    }
+    printf("\n");
+
+    // Movimento da Rainha - para a esquerda (usando do-while)
+    printf("Movimento da Rainha (8 casas para a esquerda):\n");
+    int passosRainha = 0;
+    do {
+        printf("Esquerda\n");
+        passosRainha++;
+    } while (passosRainha < casasRainha);
+    printf("\n");
+
+    // Movimento do Cavalo: 2 casas para baixo + 1 casa para a esquerda
+    // Usando loops aninhados: for (para o movimento para baixo) + while (para a esquerda)
+    printf("Movimento do Cavalo (em 'L': 2 casas para baixo e 1 casa para a esquerda):\n");
+
+    int movimentosParaBaixo = 2;
+    int movimentosParaEsquerda = 1;
+
+    // Loop externo: controla as casas para baixo (for)
+    for (int i = 0; i < movimentosParaBaixo; i++) {
+        printf("Baixo\n");  // movimenta uma casa para baixo
+    }
+
+    // Loop interno: controla o movimento para a esquerda (while)
+    int movimentosFeitosEsquerda = 0;
+    while (movimentosFeitosEsquerda < movimentosParaEsquerda) {
+        printf("Esquerda\n"); // movimenta uma casa para esquerda
+        movimentosFeitosEsquerda++;
+    }
+
+    return 0;
+}
